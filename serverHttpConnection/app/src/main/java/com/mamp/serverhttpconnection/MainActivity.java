@@ -1,14 +1,15 @@
 package com.mamp.serverhttpconnection;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.mamp.serverhttpconnection.Task.NetworkTask;
-import com.mamp.serverhttpconnection.Task.SendDataSet;
+import com.mamp.serverhttpconnection.Thread.HttpThread;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,35 +21,18 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NetworkTask networkTask = new NetworkTask("/api/sendData") {
+                JSONObject jObj = new JSONObject();
+                try {
+                    jObj.put("name", "짱구");
+                    jObj.put("comment", "android request");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
 
-                    @Override
-                    protected void onPostExecute(String s) {
-                        super.onPostExecute(s);
-
-                        Log.e("task", s);
-                        Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
-                    }
-                };
-                SendDataSet sds1 = new SendDataSet("name", "짱구");
-                SendDataSet sds2 = new SendDataSet("comment", "android request");
-                networkTask.execute(sds1, sds2);
+                new HttpThread("/api/sendData", jObj).start();
             }
         });
-//        NetworkTask networkTask = new NetworkTask("/api/sendData") {
-//
-//            @Override
-//            protected void onPostExecute(String s) {
-//                super.onPostExecute(s);
-//
-//                Log.e("task", s);
-//                Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
-//            }
-//        };
-//        SendDataSet sds1 = new SendDataSet("name", "짱구");
-//        SendDataSet sds2 = new SendDataSet("comment", "android request");
-//        networkTask.execute(sds1, sds2);
-
 
     }
+
 }

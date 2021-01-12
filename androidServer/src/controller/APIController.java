@@ -95,6 +95,7 @@ public class APIController extends HttpServlet {
 	private void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String result = null;
 		Action action=null;
+		System.out.println("api controller process");
 		try {
 			String command = request.getRequestURI();
 			if(command.indexOf(request.getContextPath()) == 0) 

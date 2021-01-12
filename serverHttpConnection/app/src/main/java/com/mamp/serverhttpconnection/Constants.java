@@ -1,4 +1,4 @@
-package com.mamp.serverhttpconnection.Task;
+package com.mamp.serverhttpconnection;
 
 public class Constants {
     public final static String serverIp = "192.168.0.108";
