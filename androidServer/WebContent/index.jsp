@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -14,10 +14,10 @@
 	<c:if test="${!empty content}">
 		<jsp:include page="${content}" flush="false" />
 	</c:if>
-	
+
 	<c:if test="${empty content}">
-		<jsp:forward page="/web/main"/>
+		<jsp:forward page="/web/main" />
 	</c:if>
-		
+
 </body>
 </html>

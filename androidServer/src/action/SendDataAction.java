@@ -33,9 +33,15 @@ public class SendDataAction implements Action {
 			name = jObj.get("name").toString();
 			comment = jObj.get("comment").toString();
 			
+//			/* retrofit2 "@Field" test code start*/
+//			System.out.println(strBuffer.toString());
+//			name = "retrofit2 name";
+//			comment = "retrofit2 comment";
+//			/* retrofit2 test code end */
+			
 			HashMap<String, Object> map = new HashMap<>();
-			map.put("name", "철수:" + name);
-			map.put("comment", "hello world:" + comment);
+			map.put("name", "이름:" + name);
+			map.put("comment", "내용:" + comment);
 
 			JSONObject jObject = new JSONObject(map);
 			String jsonText = jObject.toJSONString();
